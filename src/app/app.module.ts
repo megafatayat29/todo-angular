@@ -7,7 +7,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DataTablesModule } from "angular-datatables";
 import { FormComponent } from './components/form/form.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     DataTablesModule,
-    FontAwesomeModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
