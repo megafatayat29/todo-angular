@@ -39,8 +39,8 @@ export class TodoListComponent implements OnInit {
 
   edit(name: string) {
     this.message = {
-      status: 'warning',
-      text: `Kamu menekan tombol edit untuk: ${name}`
+      status: 'success',
+      text: `You have done the todo: ${name}`
     }
     setTimeout(() => {
       this.message = undefined;

@@ -61,7 +61,12 @@
                                     <td>{{ todo.id }}</td>
                                     <td>{{ todo.todo }}</td>
                                     <td>
-                                        <a class="btn btn-warning" (click)="edit(todo.id)"><i class="fas fa-edit"></i></a>
+                                        <ng-container *ngIf="todo.completed; else incomplete">
+                                            <a class="btn btn-success"><i class="fas fa-check"></i></a>
+                                        </ng-container>
+                                        <ng-template #incomplete>
+                                            <a class="btn btn-danger" (click)="edit(todo.todo)"><i class="fas fa-times"></i></a>
+                                        </ng-template>
                                     </td>
                                 </tr>
                             </tbody>
