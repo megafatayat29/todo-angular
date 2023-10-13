@@ -48,7 +48,7 @@ export class TodoServiceService {
       method: 'PUT', /* or PATCH */
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        completed: false,
+        completed: true,
       })
     };
     
