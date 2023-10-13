@@ -21,6 +21,12 @@ export class TodoServiceService {
       .catch(err => console.error(err));
   }
 
+  public getById(id: string) {
+    return fetch(`https://dummyjson.com/todos/${id}`)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+  }
+
   public addTodo(todo: Todo): Promise<any> {
     const options = {
       method: 'POST',
@@ -34,6 +40,28 @@ export class TodoServiceService {
     
     return fetch('https://dummyjson.com/todos/add', options)
     .then(res => res.json())
-    .then(console.log);
+    .catch(err => console.error(err));
+  }
+
+  public editTodo(id: string): Promise<any> {
+    const options = {
+      method: 'PUT', /* or PATCH */
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        completed: false,
+      })
+    };
+    
+    return fetch(`https://dummyjson.com/todos/${id}`, options)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+  }
+
+  public deleteTodo(id: string): Promise<any> {
+    return fetch(`https://dummyjson.com/todos/${id}`, {
+      method: 'DELETE',
+    })
+    .then(res => res.json())
+    .catch(err => console.error(err));
   }
 }

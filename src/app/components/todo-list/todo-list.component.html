@@ -53,6 +53,7 @@
                                 <th>No</th>
                                 <th>Todo</th>
                                 <th>Completed?</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -64,8 +65,12 @@
                                             <a class="btn btn-success"><i class="fas fa-check"></i></a>
                                         </ng-container>
                                         <ng-template #incomplete>
-                                            <a class="btn btn-danger" (click)="edit(todo.todo)"><i class="fas fa-times"></i></a>
+                                            <a class="btn btn-warning" (click)="markAsComplete(todo.id)"><i class="fas fa-times"></i></a>
                                         </ng-template>
+                                    </td>
+                                    <td style="width: 125px;">
+                                        <a class="btn btn-primary mx-2" (click)="edit(todo.id)"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-danger" (click)="delete(todo.id)"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -74,6 +79,7 @@
                                 <th>No</th>
                                 <th>Todo</th>
                                 <th>Completed?</th>
+                                <th>Action</th>
                             </tr>
                             </tfoot>
                         </table>
