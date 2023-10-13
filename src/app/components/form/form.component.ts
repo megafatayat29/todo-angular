@@ -68,24 +68,32 @@ export class FormComponent implements OnInit{
   onSubmit(): void {
     const todo: Todo = this.todoForm.value;
 
-    this.todoService.addTodo(todo).then(
-      (resp: any) => {
-        if (this.isEdit) {
-          this.message = {
-            status: 'success',
-            text: `You just edit the todo: ${todo.todo}!`
-          }
-        } else {
-          this.message = {
-            status: 'success',
-            text: `You just add the todo: ${todo.todo}!`
-          }
+    if (this.isEdit) {
+      this.todoService.editTodo(todo.id).then(
+        (resp: any) => {
+            this.message = {
+              status: 'success',
+              text: `You just edit the todo: ${todo.todo}!`
+            }
+          setTimeout(() => {
+            this.message = undefined;
+            this.router.navigateByUrl('');
+          }, 5000);
         }
-        setTimeout(() => {
-          this.message = undefined;
-          this.router.navigateByUrl('');
-        }, 5000);
-      }
-    );
+      );
+    } else {
+      this.todoService.addTodo(todo).then(
+        (resp: any) => {
+            this.message = {
+              status: 'success',
+              text: `You just add the todo: ${todo.todo}!`
+            }
+          setTimeout(() => {
+            this.message = undefined;
+            this.router.navigateByUrl('');
+          }, 5000);
+        }
+      );
+    }
   }
 }
